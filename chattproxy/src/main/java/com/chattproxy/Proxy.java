@@ -17,13 +17,13 @@ public class Proxy {
     private final EventLoopGroup bossGroup;
     private final EventLoopGroup workeGroup;
 
-    List<Server> servrar;
+    List<Server> servers;
 
     public Proxy(int port) {
         this.PORT = port;
         this.bossGroup = new NioEventLoopGroup();
         this.workeGroup = new NioEventLoopGroup();
-        this.servrar = new ArrayList<>();
+        this.servers = new ArrayList<>();
     }
 
     public void start() {
@@ -54,7 +54,7 @@ public class Proxy {
         String[] ports = currentLine.split(", ");
 
         for (int i = 0; i < ports.length; i++) {
-            servrar.add(new Server(Integer.parseInt(ports[i])));
+            servers.add(new Server(Integer.parseInt(ports[i])));
         }
 
         reader.close();
