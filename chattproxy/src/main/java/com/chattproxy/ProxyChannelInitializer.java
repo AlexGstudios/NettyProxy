@@ -28,11 +28,11 @@ public class ProxyChannelInitializer extends ChannelInitializer<SocketChannel> {
     private int nodeIndex = 0;
 
     public int roundRobin() {
-        int port = proxy.servrar.get(nodeIndex++).getPort();
+        int port = proxy.servers.get(nodeIndex++).getPort();
 
         System.out.println(port);
 
-        if (nodeIndex >= proxy.servrar.size()) {
+        if (nodeIndex >= proxy.servers.size()) {
             nodeIndex = 0;
         }
         return port;
